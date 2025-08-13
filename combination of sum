@@ -1,0 +1,21 @@
+class Solution:
+    def generate(self,curr_str,open_c,close_c,ans,n):
+        if len(curr_str)==2*n and open_c==close_c:
+            ans.append(curr_str)
+            return
+        if(open_c>n):
+            return
+        if(close_c>open_c):
+            return
+        self.generate(curr_str+"(",open_c+1,close_c,ans,n)
+        self.generate(curr_str+")",open_c,close_c+1,ans,n)
+    def generateparenthesis(self,n:int):
+        curr_str=""
+        ans=[]
+        open_c=0
+        close_c=0
+        self.generate(curr_str,open_c,close_c,ans,n)
+        return ans
+ob=Solution()
+n=int(input())
+print(ob.generateparenthesis(n))
