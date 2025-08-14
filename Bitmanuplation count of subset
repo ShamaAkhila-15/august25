@@ -1,0 +1,15 @@
+class Solution:
+    def subset(self,nums:list[int]):
+        n=len(nums)
+        t_s=(1<<n)
+        ans=[]
+        for num in range(t_s):
+            temp=[]
+            for i in range(n):
+                if(num&(1<<i)!=0):
+                    temp.append(nums[i])
+            ans.append(temp)
+        return(ans)
+ob=Solution()
+nums=list(map(int,input().split()))
+print(ob.subset(nums))
